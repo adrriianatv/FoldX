@@ -26,8 +26,21 @@ This command cleans up a structure before you analyze it, by rearranging side ch
 
 ## Analyse complex
 
-This command measures **how strongly two or more chains in a complex bind each other**, reporting the interaction energy (more negative means tighter binding), the residues at the interface with their contributions (H-bonds, van der Waals, electrostatics, solvation), and the buried surface area.
+This command measures **how strongly two or more chains in a complex bind each other**, reporting the interaction energy (more negative means tighter binding), the residues at the interface with their contributions (H-bonds, van der Waals, electrostatics, solvation) and the buried surface area.
 
 ```powershell
 .\fold.exe --command=AnalyseComplex --pdb=ug22_dimer_Repair.pdb --analyseComplexChains=A,B
 ```
+## Position scan
+
+Something to take into account is that running `PositionScan` after `AnalyseComplex`, using the list of interacting amino acids, will get you the **global** change in stability ($\Delta G_{fold}$) of the protein complex, not the binding energy between monomers ($\Delta G_{bind}$). If your PDB is a complex between monomers, `PositionScan` will evaluate how the mutation affects the total stability of the complex. Even if this includes indirectly the interactions in the interface, it does not isolate the specific impact to the binding strength. 
+
+> [!TIP]
+> The list that is given to you by `AnalyseComplex` does not specify to which amino acid are you going to do the mutations. As specified in the user guide:
+> - a 20 amino acids
+> - d 24 amino acids (Includes phosphorylated Tyr, Ser and Thr and hydroxyl Proline)
+> - h {"GLY", "ALA", "LEU", "VAL", "ILE","THR", "SER", "CYS", "MET", "LYS", "TRP", "TYR", "PHE", "HIS"}
+> - c {"ARG", "LYS", "GLU", "ASP", "HIS"} p {"ARG", "LYS", "GLU", "ASP", "HIS", "TRP", "TYR","THR", "SER", "GLN", "ASN"}
+> - n......4 bases, it mutates any base to the other three and itself.
+> - or any amino acid in one letter-code, i.e. LC43G
+
