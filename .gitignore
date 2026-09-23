@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# FoldX inputs/outputs
+*.pdb
+*.fxout
+molecules/
+rotabase.txt
+
+# Output images
+*.png
+
+# OS
+.DS_Store
+Thumbs.db
