@@ -22,7 +22,7 @@ This command cleans up a structure before you analyze it, by rearranging side ch
 ⚫ Output `your-protein_Repair.pdb` and `yourprotein_Repair.fxout`
 
 > [!NOTE]
-> An .fxout file is a plain-text output file. It contains the numerical results of energy calculations, including free energy changes (ΔΔ G), Van der Waals forces and hydrogen bonds. You can easily open and read it using any standard text editor (like Notepad or VS Code) or import it into Python or R for data analysis.
+> An .fxout file is a plain-text output file. It contains the numerical results of energy calculations, including free energy changes (ΔΔG), Van der Waals forces and hydrogen bonds. You can easily open and read it using any standard text editor (like Notepad or VS Code) or import it into Python or R for data analysis.
 
 ## Analyse complex
 
@@ -39,12 +39,18 @@ Something to take into account is that running `PositionScan` after `AnalyseComp
 > The list that is given to you by `AnalyseComplex` does not specify to which amino acid are you going to do the mutations. As specified in the user guide:
 > - a 20 amino acids
 > - d 24 amino acids (Includes phosphorylated Tyr, Ser and Thr and hydroxyl Proline)
-> - h {"GLY", "ALA", "LEU", "VAL", "ILE","THR", "SER", "CYS", "MET", "LYS", "TRP", "TYR", "PHE", "HIS"}
-> - c {"ARG", "LYS", "GLU", "ASP", "HIS"} p {"ARG", "LYS", "GLU", "ASP", "HIS", "TRP", "TYR","THR", "SER", "GLN", "ASN"}
+> - h {"GLY", "ALA", "LEU", "VAL", "ILE","THR", "SER", "CYS", "MET", "LYS", "TRP", "TYR", "PHE", "HIS"}> - c {"ARG", "LYS", "GLU", "ASP", "HIS"} p {"ARG", "LYS", "GLU", "ASP", "HIS", "TRP", "TYR","THR", "SER", "GLN", "ASN"}
 > - n......4 bases, it mutates any base to the other three and itself.
 > - or any amino acid in one letter-code, i.e. LC43G
 
 ```powershell
-.\foldx.exe --command=PositionScan --pdb=ug22_tetramer_letras_Repair.pdb --positions=KA101a,IA104a,SA105a,AA107a,YA108a,EA133a,SA204a,LA207a,RA208a,SA209a,FA211a,NA212a,EA225a,SC58a,QC461a,YC462a,WC465a,RC468a,KC484a,LC485a,MC487a,QC488a,EC491a,VC492a,KC514a
+.\foldx.exe --command=PositionScan --pdb=ug22_tetramer_letras_Repair.pdb --positions=KA101a,IA104a,...,KC514a
 ```
+⚫ Output: `PS_..._scanning_output.txt`, plus one mutant `.pdb` (and its WT twin, `WT_...pdb`) for every substitution tested.
 
+> [!TIP]
+> Interpretation: a **positive** ΔΔG means the mutation reduces the stability (candidate hot spot), a value within roughly ±0.5 kcal/mol is generally within FoldX's noise and should be treated as neutral, and a **negative** value means the mutation strengthens the stability. Bulky amino acids tend to de-stabilise the strucure more due to steric clashes, and prolines make the structure more rigid. 
+
+## Visualizing results
+
+See `foldx_heatmap.py` in this repo for a script that parses a `PositionScan` scanning_output.txt file and plots a ΔΔG heatmap (positions × substitutions), ranked by Alanine-substitution ΔΔG by default.
