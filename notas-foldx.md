@@ -29,7 +29,7 @@ This command cleans up a structure before you analyze it, by rearranging side ch
 This command measures **how strongly two or more chains in a complex bind each other**, reporting the interaction energy (more negative means tighter binding), the residues at the interface with their contributions (H-bonds, van der Waals, electrostatics, solvation) and the buried surface area.
 
 ```powershell
-.\fold.exe --command=AnalyseComplex --pdb=ug22_dimer_Repair.pdb --analyseComplexChains=A,B
+.\foldx --command=AnalyseComplex --pdb=ug22_dimer_Repair.pdb --analyseComplexChains=A,B
 ```
 ## Position scan
 
