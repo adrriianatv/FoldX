@@ -16,7 +16,7 @@ Rename-Item foldx_1_20270131.exe foldx.exe
 This command cleans up a structure before you analyze it, by rearranging side chains that have steric clashes, bad torsion angles or unusually high energy, so the whole structure sits at a lower energy. It's like smoothing out a crumpled shirt before measuring it, since the wrinkles would otherwise distort every number you take.
 
 ```powershell
-./foldx --command=RepairPDB --pdb=your-protein.pdb
+.\foldx --command=RepairPDB --pdb=your-protein.pdb
 ```
 
 ⚫ Output `your-protein_Repair.pdb` and `yourprotein_Repair.fxout`
@@ -43,4 +43,8 @@ Something to take into account is that running `PositionScan` after `AnalyseComp
 > - c {"ARG", "LYS", "GLU", "ASP", "HIS"} p {"ARG", "LYS", "GLU", "ASP", "HIS", "TRP", "TYR","THR", "SER", "GLN", "ASN"}
 > - n......4 bases, it mutates any base to the other three and itself.
 > - or any amino acid in one letter-code, i.e. LC43G
+
+```powershell
+.\foldx.exe --command=PositionScan --pdb=ug22_tetramer_letras_Repair.pdb --positions=KA101a,IA104a,SA105a,AA107a,YA108a,EA133a,SA204a,LA207a,RA208a,SA209a,FA211a,NA212a,EA225a,SC58a,QC461a,YC462a,WC465a,RC468a,KC484a,LC485a,MC487a,QC488a,EC491a,VC492a,KC514a
+```
 
