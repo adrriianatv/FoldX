@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 
-path = "PS_ug22_dimer_Repair_scanning_output.txt"
+path = "yourprotein_Repair_scanning_output.txt"
 
 # Pattern: 3 characters (WT) + chain letter (A or B) + number + letter (mutant) + tab + number
 patron = re.compile(r'^([A-Za-z0-9]{3})([AB])(\d+)([A-Za-z])\t([-\d.eE+]+)$')
@@ -108,5 +108,5 @@ ax.set_yticklabels(tabla.index)
 
 plt.colorbar(im, ax=ax, label="ddG (kcal/mol)")
 plt.tight_layout()
-plt.savefig("heatmap_position_scan_new.png", dpi=200)
+plt.savefig("heatmap_position_scan.png", dpi=200)
 plt.show()
