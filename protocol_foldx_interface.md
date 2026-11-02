@@ -29,7 +29,7 @@ This command cleans up a structure before you analyze it, by rearranging side ch
 This command measures **how strongly two or more chains in a complex bind each other**, reporting the interaction energy (more negative means tighter binding), the residues at the interface with their contributions (H-bonds, van der Waals, electrostatics, solvation) and the buried surface area.
 
 ```powershell
-.\foldx --command=AnalyseComplex --pdb=ug22_dimer_Repair.pdb --analyseComplexChains=A,B
+.\foldx --command=AnalyseComplex --pdb=yourprotein_Repair.pdb --analyseComplexChains=A,B
 ```
 ## Position scan
 
@@ -44,7 +44,7 @@ Something to take into account is that running `PositionScan` after `AnalyseComp
 > - or any amino acid in one letter-code, i.e. LC43G
 
 ```powershell
-.\foldx.exe --command=PositionScan --pdb=ug22_tetramer_letras_Repair.pdb --positions=KA101a,IA104a,...,KC514a
+.\foldx.exe --command=PositionScan --pdb=yourprotein_letras_Repair.pdb --positions=KA101a,IA104a,...,KC514a
 ```
 ⚫ Output: `PS_..._scanning_output.txt`, plus one mutant `.pdb` (and its WT twin, `WT_...pdb`) for every substitution tested.
 
