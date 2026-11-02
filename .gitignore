@@ -3,6 +3,13 @@ __pycache__/
 *.pyc
 .venv/
 
+# FoldX (licencia académica: no redistribuir)
+foldx
+foldx_*
+foldx5*
+FoldX*
+*.exe
+
 # FoldX inputs/outputs
 *.pdb
 *.fxout
