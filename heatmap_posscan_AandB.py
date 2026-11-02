@@ -1,7 +1,7 @@
 import re
 import pandas as pd
 
-path = "PS_ug22_dimer_Repair_scanning_output.txt"
+path = "yourprotein_Repair_scanning_output.txt"
 
 # Pattern: 3 characters (WT) + chain letter (A or B) + number + letter (mutant) + tab + number
 patron = re.compile(r'^([A-Za-z0-9]{3})([AB])(\d+)([A-Za-z])\t([-\d.eE+]+)$')
